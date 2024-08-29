@@ -113,11 +113,11 @@ def create_sgs(vpc_id_par):
     )
 
     # Return the security group IDs
-    return {
-        'ec2_sg_id': ec2_sg_id,
-        'alb_sg_id': alb_sg_id,
-        'rds_sg_id': rds_sg_id
-    }
+    return (
+        ec2_sg_id,
+        alb_sg_id,
+        rds_sg_id
+    )
 
 if __name__ == "__main__":
     response = create_sgs(vpc_id_par="null")

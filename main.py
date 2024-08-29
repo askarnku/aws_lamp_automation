@@ -1,5 +1,6 @@
 from network_module.network_setup import setup_network
 from security.sg import create_sgs
+from ec2_alb_rds.create_services import create_resources
 
 if __name__ == "__main__":
     (
@@ -12,10 +13,14 @@ if __name__ == "__main__":
         public_rt_id
     ) = setup_network()
 
+    print(public_subnet_1a)
+    print(public_subnet_1b)
+
     (
         ec2_sg_id,
         alb_sg_id,
         rds_sg_id 
-    )= create_sgs(vpc_id)
+    ) = create_sgs(vpc_id)
 
+    create_resources(public_subnet_1a, ec2_sg_id)
 
