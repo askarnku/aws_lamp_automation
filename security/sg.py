@@ -31,9 +31,10 @@ def create_security_group(ec2_client, group_name, description, vpc_id, ingress_r
     print(f"{group_name} Security Group ID: {sg_id}")
     return sg_id
 
-def main():
+def create_sgs(vpc_id_par):
     # Initialize EC2 client
     region_name = os.getenv('AZ')
+    vpc_id=vpc_id_par
     ec2_client = boto3.client('ec2')
 
     # Define ingress rules for EC2 security group
@@ -119,5 +120,5 @@ def main():
     }
 
 if __name__ == "__main__":
-    response = main()
+    response = create_sgs(vpc_id_par="null")
     print(response)
