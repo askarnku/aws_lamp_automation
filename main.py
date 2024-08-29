@@ -22,5 +22,7 @@ if __name__ == "__main__":
         rds_sg_id 
     ) = create_sgs(vpc_id)
 
+    #Create 2 instances in 2 regions
     create_resources(public_subnet_1a, ec2_sg_id)
+    create_resources(public_subnet_1b, ec2_sg_id)
 

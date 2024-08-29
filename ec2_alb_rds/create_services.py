@@ -11,8 +11,14 @@ def create_ec2_instances(client, subnet_id, security_group_id):
         KeyName=os.getenv('KEY_PAIR_NAME'),  # Ensure this is set in your .env file
         MinCount=1,
         MaxCount=1,
-        SecurityGroupIds=[security_group_id],  # Use security group IDs
-        SubnetId=subnet_id,  # Specify the subnet to launch in
+        NetworkInterfaces=[
+            {
+                'SubnetId': subnet_id,
+                'DeviceIndex': 0,
+                'AssociatePublicIpAddress': True,  # Ensure a public IP is assigned
+                'Groups': [security_group_id]
+            }
+        ],
         TagSpecifications=[
             {
                 'ResourceType': 'instance',
