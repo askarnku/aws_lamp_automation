@@ -1,6 +1,6 @@
 from network_module.network_setup import setup_network
 from security.sg import create_sgs
-from ec2_alb_rds.create_services import create_resources
+from ec2_alb_rds.create_ec2 import create_instance
 
 if __name__ == "__main__":
     (
@@ -23,6 +23,7 @@ if __name__ == "__main__":
     ) = create_sgs(vpc_id)
 
     #Create 2 instances in 2 regions
-    create_resources(public_subnet_1a, ec2_sg_id)
-    create_resources(public_subnet_1b, ec2_sg_id)
+    create_instance(public_subnet_1a, ec2_sg_id)
+    create_instance(public_subnet_1b, ec2_sg_id)
+
 
